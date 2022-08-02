@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<!-- =========================================================
+* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
+==============================================================
+
+* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
+* Created by: ThemeSelection
+* License: You must have a valid license purchased in order to legally use the theme for your project.
+* Copyright ThemeSelection (https://themeselection.com)
+
+=========================================================
+ -->
+<!-- beautify ignore:start -->
+   {% load static %}
+<html
+  lang="en"
+  class="light-style customizer-hide"
+  dir="ltr"
+  data-theme="theme-default"
+
+  data-template="vertical-menu-template-free"
+>
+  <head>
+
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+
+    <title>CVTforum | Tin Tức</title>
+
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'sneat/assets/img/favicon/favicon.ico' %}" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'studylap/css/animate.css' %}">
+
+    <link rel="stylesheet" href="{% static 'studylap/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'studylap/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'studylap/css/magnific-popup.css' %}">
+
+    <link rel="stylesheet" href="{% static 'studylap/css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'studylap/css/jquery.timepicker.css' %}">
+
+
+    <link rel="stylesheet" href="{% static 'studylap/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'studylap/css/style.css' %}">
+    <!-- Icons. Uncomment required icon fonts -->
+    <link rel="stylesheet" href="{% static 'sneat/assets/vendor/fonts/boxicons.css' %}" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="{% static 'sneat/assets/vendor/css/core.css' %}" class="template-customizer-core-css'%}" />
+    <link rel="stylesheet" href="{% static 'sneat/assets/vendor/css/theme-default.css' %}" class="template-customizer-theme-css'%}" />
+    <link rel="stylesheet" href="{% static 'sneat/assets/css/demo.css' %}" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="{% static 'sneat/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css'%}" />
+
+    <!-- Page CSS -->
+    <!-- Page -->
+    <link rel="stylesheet" href="{% static 'sneat/assets/vendor/css/pages/page-auth.css'%}" />
+    <!-- Helpers -->
+    <script src="{% static 'sneat/assets/vendor/js/helpers.js'%}"></script>
+
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="{% static 'sneat/assets/js/config.js'%}"></script>
+  </head>
+
+  <body>
+   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+   <div class="container">
+     <a class="navbar-brand" href="/"><span>CVT</span>Forum</a>
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="oi oi-menu"></span> Menu
+   </button>
+
+   <div class="collapse navbar-collapse" id="ftco-nav">
+       <ul class="navbar-nav ml-auto">
+          <li class="nav-item active"><a href="/home/" class="nav-link">Tin Tức</a></li>
+         <li class="nav-item"><a href="/QA/" class="nav-link">Q&A</a></li>
+         <li class="nav-item"><a href="/HDNK/" class="nav-link">Hoạt động ngoại khoá</a></li>
+         <li class="nav-item"><a href="/CLB/" class="nav-link">Câu Lạc Bộ</a></li>
+         <li class="nav-item"><a href="/HSTB/" class="nav-link">Học Sinh Tiêu Biểu</a></li>
+     </ul>
+ </div>
+
+
+</div>
+</nav>
+<!-- END nav -->
+
+    <!-- Content -->
+<div class="content-wrapper">
+            <!-- Content -->
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <div class="row">
+                  <div class="row justify-content-center">
+                      <div class="divider text-end">
+                        <div class="divider-text">  <a href="upload/"><button type="button"  class="btn rounded-pill btn-secondary">
+                            <i class='bx bx-upload'></i> Đăng Bài
+                            </button> </a></div>
+                      </div>
+                <div class="table-responsive text-nowrap">
+                  <table class="table table-dark">
+                    <thead>
+                      <tr>
+                        <th>Câu Hỏi</th>
+                        <th>Tác Giả</th>
+                        <th>Ngày Đăng</th>
+                        <th>Tags</th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        {% for q in Ques %}
+                        <tr>
+                        <td><a href="{% url 'details' q_id=q.id %}"><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{q.title}}</strong></a></td>
+                        <td>{{q.author}}</td>
+                        <td>{{q.date}}</td>
+                        <td><span class="badge bg-label-primary me-1">{{q.tag}}</span></td>
+                      </tr>
+                        {% endfor %}
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+                  </div>
+              </div>
+            </div>
+</div>
+
+    <!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+<script src="{% static 'studylap/js/jquery.min.js' %}"></script>
+<script src="{% static 'studylap/js/jquery-migrate-3.0.1.min.js' %}"></script>
+<script src="{% static 'studylap/js/popper.min.js' %}"></script>
+<script src="{% static 'studylap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'studylap/js/jquery.easing.1.3.js' %}"></script>
+<script src="{% static 'studylap/js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'studylap/js/jquery.stellar.min.js' %}"></script>
+<script src="{% static 'studylap/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'studylap/js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'studylap/js/jquery.animateNumber.min.js' %}"></script>
+<script src="{% static 'studylap/js/bootstrap-datepicker.js' %}"></script>
+<script src="{% static 'studylap/js/scrollax.min.js' %}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="{% static 'studylap/js/google-map.js' %}"></script>
+<script src="{% static 'studylap/js/main.js' %}"></script>
+    <script src="{% static 'sneat/assets/vendor/libs/jquery/jquery.js'%}"></script>
+    <script src="{% static 'sneat/assets/vendor/libs/popper/popper.js'%}"></script>
+    <script src="{% static 'sneat/assets/vendor/js/bootstrap.js'%}"></script>
+    <script src="{% static 'sneat/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js'%}"></script>
+
+    <script src="{% static 'sneat/assets/vendor/js/menu.js'%}"></script>
+    <!-- endbuild -->
+
+    <!-- Vendors JS -->
+
+    <!-- Main JS -->
+    <script src="{% static 'sneat/assets/js/main.js'%}"></script>
+
+    <!-- Page JS -->
+
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </body>
+</html>
